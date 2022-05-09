@@ -8,7 +8,7 @@ const TaskList = ({ theme }) => {
         theme ? "bg-veryLightGray" : "bg-veryDarkDesaturatedBlueDark"
       } py-1 rounded-md`}
     >
-      <div className="h-72 overflow-scroll">
+      <div className="h-72 overflow-scroll md:overflow-x-hidden">
         <Task theme={theme} />
         <Task theme={theme} />
         <Task theme={theme} />

@@ -3,7 +3,7 @@ import React from "react";
 const AddTask = ({ theme }) => {
   return (
     <div
-      className={`flex mt-6 ${
+      className={`flex mt-7 ${
         theme ? "bg-veryLightGray" : "bg-veryDarkDesaturatedBlueDark"
       } p-3 rounded-md space-x-3 items-center`}
     >

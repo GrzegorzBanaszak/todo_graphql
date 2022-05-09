@@ -23,7 +23,7 @@ module.exports = {
         lightGrayishBlueDarkHover: "hsl(236, 33%, 92%)",
         darkGrayishBlueDark: "hsl(234, 11%, 52%)",
         veryDarkGrayishBlueDark: "hsl(233, 14%, 35%)",
-        veryDarkDesaturatedBlueDark: "hsl(237, 14%, 26%)",
+        veryDarkDesaturatedBlueDark: "#25273c",
       },
     },
   },
