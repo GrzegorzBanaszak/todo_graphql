@@ -2,7 +2,7 @@ import React from "react";
 import closeIcon from "../images/icon-cross.svg";
 const Task = ({ theme }) => {
   return (
-    <div className="flex items-center py-4">
+    <div className="flex items-center py-4 task-border">
       <div
         className={`w-6 h-6 ml-6 border rounded-full ${
           theme ? "border-darkGrayishBlue" : "border-darkGrayishBlueDark"

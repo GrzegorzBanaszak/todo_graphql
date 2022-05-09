@@ -6,11 +6,21 @@ const TaskList = ({ theme }) => {
     <div
       className={`flex flex-col mt-6 ${
         theme ? "bg-veryLightGray" : "bg-veryDarkDesaturatedBlueDark"
-      } py-1 rounded-md divide-y divide-darkGrayishBlueDark`}
+      } py-1 rounded-md`}
     >
-      <Task theme={theme} />
-      <Task theme={theme} />
-      <Task theme={theme} />
+      <div className="h-72 overflow-scroll">
+        <Task theme={theme} />
+        <Task theme={theme} />
+        <Task theme={theme} />
+        <Task theme={theme} />
+        <Task theme={theme} />
+        <Task theme={theme} />
+      </div>
+
+      <div className="flex items-center justify-between p-4 text-darkGrayishBlue">
+        <div>6 items left</div>
+        <div>Clear Complited</div>
+      </div>
     </div>
   );
 };
