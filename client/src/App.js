@@ -1,5 +1,21 @@
+import light from "./images/bg-mobile-light.jpg";
+import lightIcon from "./images/icon-moon.svg";
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <main className="w-full h-screen relative">
+      <div>
+        <img src={light} alt="banner" />
+      </div>
+      <div className="absolute top-12 left-6 right-6">
+        <header className="flex justify-between text-veryLightGray text-3xl">
+          <h2>TODU</h2>{" "}
+          <div>
+            <img src={lightIcon} alt="toggle" />
+          </div>
+        </header>
+      </div>
+    </main>
+  );
 }
 
 export default App;
