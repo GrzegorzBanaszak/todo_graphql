@@ -1,3 +1,4 @@
+import AddTask from "./components/AddTask";
 import light from "./images/bg-mobile-light.jpg";
 import lightIcon from "./images/icon-moon.svg";
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <img src={lightIcon} alt="toggle" />
           </div>
         </header>
+        <AddTask />
       </div>
     </main>
   );
