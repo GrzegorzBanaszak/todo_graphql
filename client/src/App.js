@@ -83,7 +83,7 @@ function App() {
           </div>
         </header>
         <AddTask theme={theme} refetch={refetch} />
-        <TaskList theme={theme} tasks={data.getTasks} />
+        <TaskList theme={theme} tasks={data.getTasks} refetch={refetch} />
         <TypeSelect theme={theme} />
       </div>
     </main>

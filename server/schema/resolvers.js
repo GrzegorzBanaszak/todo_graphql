@@ -12,6 +12,10 @@ const resolvers = {
       const task = await Task.create({ text: args.input.text, isDone: false });
       return task;
     },
+    deleteTask: async (parent, args) => {
+      await Task.findByIdAndDelete(args.input);
+      return args.input;
+    },
   },
 };
 

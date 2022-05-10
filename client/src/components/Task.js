@@ -1,6 +1,7 @@
 import React from "react";
 import closeIcon from "../images/icon-cross.svg";
-const Task = ({ theme, task }) => {
+
+const Task = ({ theme, task, taskToDelete }) => {
   return (
     <div className="flex items-center py-4 task-border">
       <div
@@ -16,7 +17,11 @@ const Task = ({ theme, task }) => {
         {task.text}
       </p>
       <div className="justify-self-end ml-auto mt-0 mr-4 mb-0">
-        <img src={closeIcon} alt="close" />
+        <img
+          src={closeIcon}
+          alt="close"
+          onClick={() => taskToDelete(task._id)}
+        />
       </div>
     </div>
   );

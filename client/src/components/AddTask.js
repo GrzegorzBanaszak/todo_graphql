@@ -12,10 +12,10 @@ const CREATE_TASK = gql`
 
 const AddTask = ({ theme, refetch }) => {
   const [text, setText] = useState("");
-  const [createUser] = useMutation(CREATE_TASK);
+  const [createTask] = useMutation(CREATE_TASK);
   const handleEnterPress = (e) => {
     if (e.key === "Enter") {
-      createUser({
+      createTask({
         variables: {
           input: { text },
         },

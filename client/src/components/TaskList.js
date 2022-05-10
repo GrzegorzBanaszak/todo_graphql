@@ -1,7 +1,23 @@
+import { gql, useMutation } from "@apollo/client";
 import React from "react";
 import Task from "./Task";
+const DELETS_TASK = gql`
+  mutation DeleteTask($input: String) {
+    deleteTask(input: $input)
+  }
+`;
+const TaskList = ({ theme, tasks, refetch }) => {
+  const [deleteTask] = useMutation(DELETS_TASK);
 
-const TaskList = ({ theme, tasks }) => {
+  const taskToDelete = (id) => {
+    deleteTask({
+      variables: {
+        input: id,
+      },
+    });
+    refetch();
+  };
+
   return (
     <div
       className={`flex flex-col mt-6 ${
@@ -10,7 +26,12 @@ const TaskList = ({ theme, tasks }) => {
     >
       <div className="h-72 overflow-scroll md:overflow-x-hidden">
         {tasks.map((task) => (
-          <Task key={task._id} theme={theme} task={task} />
+          <Task
+            key={task._id}
+            theme={theme}
+            task={task}
+            taskToDelete={taskToDelete}
+          />
         ))}
       </div>
 
