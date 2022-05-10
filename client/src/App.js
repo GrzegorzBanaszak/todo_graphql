@@ -24,48 +24,34 @@ const QUERY_ALL_TASKS = gql`
 
 function App() {
   const [theme, setTheme] = useState(true);
-  const [banner, setBanner] = useState(null);
   const { data, loading } = useQuery(QUERY_ALL_TASKS);
-  const changeBannerImage = () => {
-    if (window.innerWidth > 1024) {
-      if (theme) {
-        setBanner(lightDesktop);
-      } else {
-        setBanner(darkDesktop);
-      }
+  const [windowWidht, setWindowWidth] = useState(window.innerWidth);
+
+  const getWitdhtOnResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  const changeThemeLight = () => {
+    if (windowWidht > 1024) {
+      return lightDesktop;
     } else {
-      if (theme) {
-        setBanner(lightMobile);
-      } else {
-        setBanner(darkMobile);
-      }
+      return lightMobile;
     }
   };
 
-  const onThemeChange = () => {
-    setTheme((prev) => !prev);
-    if (window.innerWidth > 1024) {
-      if (!theme) {
-        setBanner(lightDesktop);
-      } else {
-        setBanner(darkDesktop);
-      }
+  const changeThemeDark = () => {
+    if (windowWidht > 1024) {
+      return darkDesktop;
     } else {
-      if (!theme) {
-        setBanner(lightMobile);
-      } else {
-        setBanner(darkMobile);
-      }
+      return darkMobile;
     }
   };
+
   useEffect(() => {
-    if (banner === null) {
-      changeBannerImage();
-    }
-    window.addEventListener("resize", changeBannerImage);
+    window.addEventListener("resize", getWitdhtOnResize);
 
     return () => {
-      window.removeEventListener("resize", changeBannerImage);
+      window.removeEventListener("resize", getWitdhtOnResize);
     };
   }, []);
 
@@ -79,7 +65,11 @@ function App() {
       }`}
     >
       <div>
-        <img className="w-full" src={banner} alt="banner" />
+        <img
+          className="w-full"
+          src={theme ? changeThemeLight() : changeThemeDark()}
+          alt="banner"
+        />
       </div>
       <div className="absolute top-12 left-6 right-6 md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 max-w-screen-sm">
         <header className="flex justify-between text-veryLightGray text-3xl">
@@ -88,7 +78,7 @@ function App() {
             <img
               src={theme ? lightIcon : darkIcon}
               alt="toggle"
-              onClick={onThemeChange}
+              onClick={() => setTheme((prev) => !prev)}
             />
           </div>
         </header>
