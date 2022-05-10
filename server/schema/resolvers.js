@@ -7,6 +7,12 @@ const resolvers = {
       return tasks;
     },
   },
+  Mutation: {
+    createTask: async (parent, args) => {
+      const task = await Task.create({ text: args.input.text, isDone: false });
+      return task;
+    },
+  },
 };
 
 module.exports = { resolvers };

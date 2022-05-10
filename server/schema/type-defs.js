@@ -10,6 +10,13 @@ const typeDefs = gql`
   type Query {
     getTasks: [Task!]!
   }
+
+  input CreateTaskInput {
+    text: String!
+  }
+  type Mutation {
+    createTask(input: CreateTaskInput): Task
+  }
 `;
 
 module.exports = { typeDefs };
