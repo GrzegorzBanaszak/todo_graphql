@@ -9,10 +9,22 @@ import { useState } from "react";
 import TaskList from "./components/TaskList";
 import TypeSelect from "./components/TypeSelect";
 import { useEffect } from "react";
+//Apollo imports
+import { useQuery, gql } from "@apollo/client";
+
+const QUERY_ALL_TASKS = gql`
+  query Query {
+    getTasks {
+      text
+      isDone
+    }
+  }
+`;
+
 function App() {
   const [theme, setTheme] = useState(true);
   const [banner, setBanner] = useState(null);
-
+  const { data, loading, error } = useQuery(QUERY_ALL_TASKS);
   const changeBannerImage = () => {
     if (window.innerWidth > 1024) {
       if (theme) {
@@ -56,6 +68,9 @@ function App() {
     };
   }, []);
 
+  if (loading) {
+    return <h3>Loading</h3>;
+  }
   return (
     <main
       className={`w-full h-screen relative ${
@@ -77,7 +92,7 @@ function App() {
           </div>
         </header>
         <AddTask theme={theme} />
-        <TaskList theme={theme} />
+        <TaskList theme={theme} tasks={data.getTasks} />
         <TypeSelect theme={theme} />
       </div>
     </main>
