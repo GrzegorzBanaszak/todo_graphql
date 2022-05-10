@@ -19,8 +19,7 @@ const AddTask = ({ theme, refetch }) => {
         variables: {
           input: { text },
         },
-      });
-      refetch();
+      }).then(() => refetch());
       setText("");
     }
   };

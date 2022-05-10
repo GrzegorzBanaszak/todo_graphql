@@ -14,8 +14,7 @@ const TaskList = ({ theme, tasks, refetch }) => {
       variables: {
         input: id,
       },
-    });
-    refetch();
+    }).then(() => refetch());
   };
 
   return (
