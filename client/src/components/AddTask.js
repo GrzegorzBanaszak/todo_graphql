@@ -1,6 +1,29 @@
+import { gql, useMutation } from "@apollo/client";
 import React from "react";
+import { useState } from "react";
 
-const AddTask = ({ theme }) => {
+const CREATE_TASK = gql`
+  mutation CreateTask($input: CreateTaskInput) {
+    createTask(input: $input) {
+      text
+    }
+  }
+`;
+
+const AddTask = ({ theme, refetch }) => {
+  const [text, setText] = useState("");
+  const [createUser] = useMutation(CREATE_TASK);
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter") {
+      createUser({
+        variables: {
+          input: { text },
+        },
+      });
+      refetch();
+      setText("");
+    }
+  };
   return (
     <div
       className={`flex mt-7 ${
@@ -14,6 +37,9 @@ const AddTask = ({ theme }) => {
       ></div>
       <input
         type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        onKeyPress={handleEnterPress}
         placeholder="Create a new todu..."
         className={`border-none focus:outline-none bg-transparent text-sm ${
           theme

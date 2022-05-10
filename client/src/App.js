@@ -24,7 +24,7 @@ const QUERY_ALL_TASKS = gql`
 
 function App() {
   const [theme, setTheme] = useState(true);
-  const { data, loading } = useQuery(QUERY_ALL_TASKS);
+  const { data, loading, refetch } = useQuery(QUERY_ALL_TASKS);
   const [windowWidht, setWindowWidth] = useState(window.innerWidth);
 
   const getWitdhtOnResize = () => {
@@ -82,7 +82,7 @@ function App() {
             />
           </div>
         </header>
-        <AddTask theme={theme} />
+        <AddTask theme={theme} refetch={refetch} />
         <TaskList theme={theme} tasks={data.getTasks} />
         <TypeSelect theme={theme} />
       </div>
