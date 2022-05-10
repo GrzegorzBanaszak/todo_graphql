@@ -15,6 +15,7 @@ import { useQuery, gql } from "@apollo/client";
 const QUERY_ALL_TASKS = gql`
   query Query {
     getTasks {
+      _id
       text
       isDone
     }
@@ -24,7 +25,7 @@ const QUERY_ALL_TASKS = gql`
 function App() {
   const [theme, setTheme] = useState(true);
   const [banner, setBanner] = useState(null);
-  const { data, loading, error } = useQuery(QUERY_ALL_TASKS);
+  const { data, loading } = useQuery(QUERY_ALL_TASKS);
   const changeBannerImage = () => {
     if (window.innerWidth > 1024) {
       if (theme) {
