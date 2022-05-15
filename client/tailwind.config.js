@@ -25,6 +25,9 @@ module.exports = {
         veryDarkGrayishBlueDark: "hsl(233, 14%, 35%)",
         veryDarkDesaturatedBlueDark: "#25273c",
       },
+      spacing: {
+        pix: "1px",
+      },
     },
   },
   plugins: [],
